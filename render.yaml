@@ -4,6 +4,6 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python app.py
-    repo: Bhuvanareddy-03/Product-Recomender
+    repo: https://github.com/Bhuvanareddy-03/hierarchical-clustering-product-recommender
     branch: main
     autoDeploy: true

@@ -5,13 +5,13 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import AgglomerativeClustering
 
 def load_and_cluster(filepath):
-    df = pd.read_csv(filepath, header=None)
+    df = pd.read_csv(filepath, usecols=[0, 1, 2] , header=None)
     df.columns = ['userId', 'productId', 'rating', 'timestamp']
     df.drop(columns=['timestamp'], inplace=True)
     df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
     df.dropna(inplace=True)
 
-    df_sample = df.sample(n=10000, random_state=42)
+    df_sample = df.sample(n=3000, random_state=42)
     matrix = df_sample.pivot_table(index='userId', columns='productId', values='rating').fillna(0)
 
     scaler = StandardScaler()

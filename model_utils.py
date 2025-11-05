@@ -7,7 +7,6 @@ from sklearn.cluster import AgglomerativeClustering
 def load_and_cluster(filepath):
     df = pd.read_csv(filepath, usecols=[0, 1, 2] , header=None)
     df.columns = ['userId', 'productId', 'rating']
-    df.drop(columns=['timestamp'], inplace=True)
     df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
     df.dropna(inplace=True)
 
